@@ -11,6 +11,12 @@ grid.style.height='800px';
 grid.style.flexWrap = 'wrap';
 grid.style.margin = 'auto';
 
+function randomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function setGridSize(sideSize) {
     grid.innerHTML = "";
     grid.style.flexDirection = 'row';
@@ -33,11 +39,14 @@ function setGridSize(sideSize) {
         row.addEventListener(
             "mouseover",
             (event) => {
-                event.target.style.background = "orange";
+                let red = randomNumber(0, 255);
+                let green = randomNumber(0, 255);
+                let blue = randomNumber(0, 255);
+                event.target.style.background = `rgb(${red}, ${green}, ${blue})`;
 
                 setTimeout(() => {
                     event.target.style.background = "";
-                }, 250);
+                }, 300);
             },
             false,
         );
